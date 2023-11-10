@@ -26,7 +26,7 @@ const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   // Task currently editing
   const [editingTask, setEditingTask] = useState(null);
-  const [validationError, setValidationError] = useState(false); // Validation flag
+  const [validationError, setValidationError] = useState(false);
   // Function to add a new task or update an existing task
   const handleAddTask = () => {
     if (task.title.trim() !== "" && task.deadline !== "") {
