@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TextInput, Button, Modal } from "react-native";
+import { View, Text, TextInput, Modal, TouchableOpacity } from "react-native";
+import { Button} from '@rneui/themed'
 import styles from "./components/styles";
 import DatePicker from "react-native-modern-datepicker";
 
@@ -13,7 +14,6 @@ const TaskModal = ({
 }) => {
   return (
     <Modal visible={modalVisible} animationType="slide" transparent={false}>
-      {/* Container for the modal */}
       <View style={styles.modalContainer}>
         <TextInput
           style={styles.input}
@@ -48,18 +48,23 @@ const TaskModal = ({
             Please fill in all fields correctly.
           </Text>
         )}
-        <Button
-          // Display "Update" when editing an existing
-          // task, "Add" when adding a new task
+        
+        <TouchableOpacity
           title={task.id ? "Update" : "Add"}
-          // Call handleAddTask()
-          // when button is pressed
           onPress={handleAddTask}
-          // Set button color
-          color="green"
-        />
+         color="green"
+          style={styles.addButton}>
+          <Text style={styles.buttonText}>Add</Text>
+          </TouchableOpacity>
+        <TouchableOpacity
+          title="Cancel"
+          onPress={handleCancel}
+          color="#FF0000"
+          style={styles.modalCancel}
+        ><Text style={styles.buttonText}>Cancel</Text>
+        </TouchableOpacity>
 
-        <Button title="Cancel" onPress={handleCancel} color="#FF3B30" />
+        
       </View>
     </Modal>
   );
